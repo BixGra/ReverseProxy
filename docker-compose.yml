@@ -1,0 +1,32 @@
+version: "3.1"
+
+services:
+  myproxy:
+    image: myproxy:latest
+    container_name: myproxy
+    ports:
+      - "80:80"
+    networks:
+      - mynet
+
+  app1:
+    image: app1:latest
+    container_name: app1
+    ports:
+      - "8001:8001"
+    networks:
+      - mynet
+
+  app2:
+    image: app2:latest
+    container_name: app2
+    ports:
+      - "8002:8002"
+    networks:
+      - mynet
+
+networks:
+  mynet:
+    driver: bridge
+
+
